@@ -5,6 +5,7 @@ import java.lang.*;
 public class Calc {
 
   public static void main(String[] args) {
+    System.out.println("Welcome to Calc!");
     System.out.println("Enter expression:");
     String expr = IOUtil.readString();
 
