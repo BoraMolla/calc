@@ -35,12 +35,16 @@ public class Calculate {
 		       exprStack.push(Integer.parseInt(val));
 		   }
 		
-		   while (exprStack.size()!=1) {
+		   while (exprStack.size()>1) {
 		     eval(exprStack, opStack);
 		   }
-		
-		   return exprStack.pop().toString();
-		 }
+		   
+		   if(exprStack.size() == 1){
+			   return exprStack.pop().toString();
+		   }else{
+			   return "Error: This expression could not be evaluated.\nPerhaps you divided by zero?";
+		   }
+		 }//*/
 		
 		 private static void eval(Stack<Integer> exprStack, Stack<Character> opStack) {
 		   int ex2 = exprStack.pop().hashCode();
@@ -50,10 +54,11 @@ public class Calculate {
 		     case '+': exprStack.push(ex1+ex2); break;
 		     case '-': exprStack.push(ex1-ex2); break;
 		     case '*': exprStack.push(ex1*ex2); break;
-		     case '/': exprStack.push(ex1/ex2); break;
-		     default: System.out.println("Failure"); break;
+		     case '/': if(ex2 != 0){ exprStack.push(ex1/ex2); break; }
 		   }
+		   //if it reaches here it's broken :(
 		 }
+		 
 		 private static boolean isNum(char x) {
 		   return ('0' <= x && x <= '9');
 		 } //*/
