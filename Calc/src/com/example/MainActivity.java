@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
@@ -26,7 +27,7 @@ public class MainActivity extends Activity {
         final Button button = (Button) findViewById(R.id.button_id);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String expr = v.toString();
+                String expr = ((EditText) findViewById(R.id.exprEntry)).getText().toString();
                 ((TextView) findViewById(R.id.resultText)).setText(calculateExpr(expr));
             }
         });
@@ -38,7 +39,7 @@ public class MainActivity extends Activity {
 	   Stack<Character> opStack = new Stack<Character>();
 	   opStack.push('$');
 	   String val = "0";
-	
+	   
 	   Hashtable<Character,Integer> opTable = new Hashtable<Character,Integer>();
 	   opTable.put('+', 1);
 	   opTable.put('-', 1);
@@ -49,13 +50,13 @@ public class MainActivity extends Activity {
 	       if (isNum(expr.charAt(i))) {
 	         val += expr.charAt(i);
 	       } else {
-	           if (!val.equals("0"))
+	           if (!val.equals("0")){
 	             exprStack.push(Integer.parseInt(val));
+	           }
 	           val = "0";
-	           if ((opTable.get(expr.charAt(i))).hashCode()>(opTable.get(opStack.peek())).hashCode())
+	           if ((opTable.get(expr.charAt(i))).hashCode()>(opTable.get(opStack.peek())).hashCode()){
 	             opStack.push(expr.charAt(i));
-	             
-	           else {
+	           }else {
 	             eval(exprStack, opStack);
 	             i--;
 	           }
@@ -69,7 +70,6 @@ public class MainActivity extends Activity {
 	   }
 	
 	   return exprStack.pop().toString();
-	
 	 }
 	
 	 private static void eval(Stack<Integer> exprStack, Stack<Character> opStack) {
@@ -77,15 +77,14 @@ public class MainActivity extends Activity {
 	   int ex1 = exprStack.pop().hashCode();
 	   char op = (char)opStack.pop().hashCode();
 	   switch (op) {
-	     case '+': exprStack.push(ex1+ex2); return;
-	     case '-': exprStack.push(ex1-ex2); return;
-	     case '*': exprStack.push(ex1*ex2); return;
-	     case '/': exprStack.push(ex1/ex2); return;
-	     default: System.out.println("Failure"); return;
+	     case '+': exprStack.push(ex1+ex2); break;
+	     case '-': exprStack.push(ex1-ex2); break;
+	     case '*': exprStack.push(ex1*ex2); break;
+	     case '/': exprStack.push(ex1/ex2); break;
+	     default: System.out.println("Failure"); break;
 	   }
 	 }
-	
 	 private static boolean isNum(char x) {
-	   return ('0' <= x && x <= '9');//*/
-	 } 
+	   return ('0' <= x && x <= '9');
+	 } //*/
 }
