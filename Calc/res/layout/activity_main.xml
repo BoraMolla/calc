@@ -6,19 +6,21 @@
     <TextView android:id="@+id/text"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Enter expression here. No spaces/brackets/floats." />
+              android:text="@string/headerText" />
     <EditText 
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:id="@+id/exprEntry" />
+              android:id="@+id/exprEntry" 
+              android:inputType="text"
+              android:hint="@string/editHint"/>
 
     <Button android:id="@+id/button_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="=" />
+            android:text="@string/calculateButtonText" />
             
     <TextView android:id="@+id/resultText"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="OUTPUT DISPLAYED HERE IF I'M LUCKY" />
+              android:text="" />
 </LinearLayout>
