@@ -1,13 +1,33 @@
 import java.util.*;
 import java.lang.*;
 
+
+ public class MyActivity extends Activity {
+     protected void onCreate(Bundle icicle) {
+         super.onCreate(icicle);
+
+         setContentView(R.layout.content_layout_id);
+
+         final Button button = (Button) findViewById(R.id.button_id);
+         button.setOnClickListener(new View.OnClickListener() {
+             public void onClick(View v) {
+                 String expr = v.getText().toString();
+                 findViewById(R.id.resultText).setText(calculateExpr(expr));
+             }
+         });
+     }
+ }
+
+
 public class Calc {
 
-  public static void main(String[] args) {
-    System.out.println("Welcome to Calc!");
-    System.out.println("Enter expression:");
-    String expr = IOUtil.readString();
+//  public static void main(String[] args) {
+//    System.out.println("Welcome to Calc!");
+//    System.out.println("Enter expression:");
+//    String expr = IOUtil.readString();
 
+
+public static String calculateExpr(String expr){
     Stack<Integer> exprStack = new Stack<Integer>();
     Stack<Character> opStack = new Stack<Character>();
     opStack.push('$');
@@ -42,7 +62,7 @@ public class Calc {
       eval(exprStack, opStack);
     }
 
-    System.out.println(exprStack.pop());
+    return "" + exprStack.pop();
 
   }
 
