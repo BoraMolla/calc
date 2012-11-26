@@ -12,9 +12,13 @@
               android:layout_height="wrap_content"
               android:id="@+id/exprEntry" />
 
-    <Button android:id="@+id/button"
+    <Button android:id="@+id/button_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="="
-            android:onClick="calculate" />
+            android:text="=" />
+            
+    <TextView android:id="@+id/resultText"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="OUTPUT DISPLAYED HERE IF I'M LUCKY" />
 </LinearLayout>
