@@ -7,8 +7,14 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Enter expression here. No spaces/brackets/floats." />
+    <EditText 
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/vnosEmaila"
+              android:layout_below="@id/navodiloEmail"/>
+
     <Button android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello, I am a Button" />
+            android:text="=" />
 </LinearLayout>
